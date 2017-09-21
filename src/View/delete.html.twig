@@ -1,0 +1,17 @@
+{% extends "layoutAdmin.html.twig" %} 
+{% block content %}
+<div class="container">
+    <section class="row cadre">
+        <h1>Vous êtes sur le point de supprimer : {{chapter.title}}</h1>
+        <p>êtes-vous certain de vouloir continuer?
+            <p>
+                <form action="http://framework.dev/admin/delete/{{chapter.id}}" method="post">
+                    <a href="http://framework.dev/admin/accueil" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-chevron-left"></i> Retour
+                    </a>
+
+                    <input type="submit" value="Supprimer" class="btn btn-danger" /> {{ form_rest(form) }}
+                </form>
+    </section>
+</div>
+{% endblock %}

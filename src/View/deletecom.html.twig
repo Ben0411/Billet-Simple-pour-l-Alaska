@@ -1,0 +1,22 @@
+{% extends "layoutAdmin.html.twig" %} 
+{% block content %}
+<div class="container">
+    <section class="row">
+        <div class="cadre">
+            <h1><i class="fa fa-trash-o"></i> Vous êtes sur le point de supprimer : </h1>
+            <blockquote>
+                <p>{{comment.comment}}</p>
+            </blockquote>
+            <p class="question">êtes-vous certain de vouloir continuer ?
+                <p>
+                    <form action="http://framework.dev/admin/deletecom/{{comment.id}}" method="post">
+                        <a href="http://framework.dev/admin/accueil" class="btn btn-default">
+                            <i class="glyphicon glyphicon-chevron-left"></i> Retour
+                        </a>
+
+                        <input type="submit" value="supprimer" class="btn btn-danger" /> {{ form_rest(form) }}
+                    </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

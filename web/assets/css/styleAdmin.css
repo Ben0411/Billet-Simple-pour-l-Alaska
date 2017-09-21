@@ -1,0 +1,327 @@
+/*Typo*/
+@font-face {
+    font-family: 'aaarghnormal';
+    src: url('../css/font/Aaargh-webfont.eot');
+    src: url('../css/font/Aaargh-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../css/font/Aaargh-webfont.woff') format('woff'),
+         url('../css/font/Aaargh-webfont.ttf') format('truetype'),
+         url('../css/font/Aaargh-webfont.svg#aaarghnormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#logo-title {
+    margin-left: 50px;
+}
+
+body{
+    margin: 0px;
+    padding-top: 0px;
+}
+
+.lateral {
+  font-family: 'aaarghnormal';
+  margin-left: 20px;
+  background-color: #125C7F;
+  margin-left: 0px;
+  margin-top: 0px;
+  box-shadow: 0px 10px 12px #aaa;
+}
+
+.lateral a {
+    color: white;
+}
+
+.lateral li {
+    border-left-style: solid;
+    border-left-color : white;
+    border-left-width: 1px;
+}
+
+.nav-pills > li > a:hover {
+    background-color: #0A3245;
+     border-radius:  0px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #25B8FF;
+    border-radius:  0px;
+}
+
+.dropdown-menu {
+    background-color: #125C7F;
+  
+}
+
+.dropdown-menu > li > a {
+    color: white;
+    border-bottom: dashed;
+    border-bottom-color: white;
+    border-width : 1px;
+   
+}
+
+.dropdown > a:hover {
+    background-color: #0A3245;
+}
+
+.dropdown > a:focus {
+    background-color: #0A3245;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #0A3245;
+    color : white;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #25b8ff;
+    border-color: #337ab7;
+}
+
+.btn {
+    font-family: 'aaarghnormal'; 
+}
+
+.jumbotron {
+    margin: 0px;
+    background-image: url(../img/admin_entete.jpg);
+    height: 200px;
+}
+
+#logo-title {
+    height: 120px;
+}
+
+
+.cadre {
+    
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 12px #aaa;
+    margin-top :30px;
+    border-style: solid;
+    border-color:#25B8FF;
+    border-width: 0.5px;
+    padding: 20px;
+}
+
+.panel {
+    margin :10px;
+}
+
+.tab-pane caption {
+    font-family: 'aaarghnormal';
+    color: #25B8FF;
+    font-size: 1.3em;
+}
+
+.cadre h1 {
+    font-family: 'aaarghnormal';
+    color: #25B8FF;
+}
+
+/*Button style*/
+.btn {
+    font-family: 'aaarghnormal'; 
+    margin-top: 10px;
+}
+
+.btn-success {
+    color: #25B8FF;
+    background-color: white;
+    border-color: #25B8FF;
+    border-radius: 20px;
+    font-size: 0.9em;
+    padding: 8px;
+}
+.btn-success:hover {
+    background-color: #125C7F;
+    color: white;
+    border-color: #125C7F;
+    
+}
+/*new chap button*/
+.newChap {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+.btn-danger {
+    color: red;
+    background-color: white;
+    border-color: red;
+    border-radius: 20px;
+    font-size: 0.9em;
+    padding: 8px;
+    margin-left: 20px;
+}
+
+.btn-primary{
+   color: #25B8FF;
+    background-color: white;
+    border-color: #25B8FF;
+    border-radius: 10px;
+    padding: 8px; 
+}
+
+/*Table style*/
+.table-striped {
+    border-color: #25B8FF;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: central; 
+    border-top: 1px solid #25b8ff;
+    color: grey;
+}
+
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #31708f;
+    color: #31708f;
+}
+
+/*form*/
+
+h3 {
+     font-family: 'aaarghnormal';
+    color: #25B8FF;  
+}
+
+.form-group input {
+    color: #25B8FF;
+    background-color: white;
+    border-color: #25B8FF;
+    border-radius: 10px;
+    border:1px solid;
+    font-size: 0.9em;
+    padding: 10px;
+    -webkit-transition: box-shadow 0.4s ease-in-out;
+    transition: box-shadow 0.4s ease-in-out;
+}
+
+.form-group input:focus {
+     box-shadow: 0px 5px 5px #aaa;
+}
+
+.form-group input:hover {
+    color: #25B8FF;
+    background-color: white;
+    border-color: #25B8FF;
+    border-radius: 10px;
+    font-size: 0.9em;
+     box-shadow: 0px 5px 5px #aaa;
+}
+
+.form-group label {
+    font-family: 'aaarghnormal';
+
+    padding: 8px;
+}
+
+.form-group label {
+    color: grey;
+    font-size: 0.8em;
+}
+
+textarea {
+    color: #25B8FF;
+    background-color: white;
+    border: 1px solid;
+    border-color: #25B8FF;
+    border-radius: 10px;
+    height: 50px;
+    font-size: 0.9em;
+    padding: 10px;
+    -webkit-transition: box-shadow 0.4s ease-in-out;
+    transition: box-shadow 0.4s ease-in-out;
+}
+
+textarea:focus {
+  
+     box-shadow: 0px 5px 5px #aaa;
+}
+
+textarea:hover {
+     box-shadow: 0px 5px 5px #aaa;
+}
+
+.question {
+    color : #902b2b;
+    font-size: 1.5em;
+}
+
+ blockquote li {
+    list-style: none;
+    font-size: 0.8em;
+    color: gray;
+}
+
+blockquote {
+    border-color: #25B8FF;
+    margin-top: 20px;
+}
+
+strong {
+    color : #25B8FF;
+}
+
+.contact {
+    border: 1.3px dashed #25B8FF;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.contact > h2 {
+    font-family: 'aaarghnormal';
+    color : #25B8FF;
+    margin-bottom: 20px;
+}
+
+.contact > p {
+    font-size: 1.2em;
+    color: gray;
+}
+
+.dataTables_filter {
+    font-family: 'aaarghnormal';
+}
+
+.dataTables_filter label  {
+    color : #25B8FF;
+}
+
+.dataTables_length label {
+    font-family: 'aaarghnormal';
+    color : #25B8FF;
+}
+
+.dataTables_paginate {
+        font-family: 'aaarghnormal';
+        color : #25B8FF;
+}
+
+.paginate_button {
+    font-family: 'aaarghnormal';
+}
+
+.redAlert {
+    color: red;
+    padding-top: 50px;
+}
+
+.logout {
+    margin-right: 70px;
+    margin-top: 20px;
+}
+
+.login {
+    margin-top: 20px;
+}
+
+

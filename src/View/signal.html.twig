@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %} {% block content %}
+<div class="mainview commentBackground">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="background_chapter col-xs-8 col-xs-offset-2">
+                <div class="commentPage">
+                    <h1>Signaler le commentaire : </h1>
+
+                    <div class="cadre">
+                        <h2><strong>{{comment.pseudo}}</strong> à écrit le <small>{{comment.date|date('d/m/Y')}}</small> </h2>
+                        <p>{{comment.comment}}</p>
+                    </div>
+                    <blockquote>
+                        <p>Si vous repérez un contenu qui enfreint nos règles, vous pouvez nous le signaler. Nous examinerons les informations que vous nous communiquez et, si nous estimons qu'un contenu est inacceptable, nous prendrons les mesures qui s'imposent.</p>
+                    </blockquote>
+
+                    <div class="form">
+
+                        {{ form_start(form, {'attr': {'class': ' '}}) }} 
+                        {{ form_errors(form)}}
+
+                        <div class="form-group">
+                            {{ form_label(form.message, 'message', {'label_attr': {'class': 'control-label'}})}}<br> 
+                            {{ form_errors(form.message) }}
+                            {{ form_widget (form.message, {'attr': {'class': 'col-xs-12' }}) }}<br>
+                        </div>
+
+                        {{form_widget(form.save, {'label': 'Signaler','attr': { 'class': 'btn btn-primary '}}) }} 
+                        {{ form_end(form)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

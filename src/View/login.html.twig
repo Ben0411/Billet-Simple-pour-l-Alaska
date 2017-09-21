@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %} {% block content %}
+<div vs-anchor="" class="mainview login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="background_login col-sm-8 col-sm-offset-4 col-xs-12">
+                <div class="form">
+
+                    {{ form_start(form, {'attr': {'class': ' '}}) }} {{ form_errors(form)}}
+
+                    <div class="form-group">
+                        {{ form_label(form.username, 'Login', {'label_attr': {'class': 'control-label'}})}}<br> {{ form_widget (form.username, {'attr': {'class': 'col-xs-12' }}) }}<br>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.password, 'mot de passe', {'label_attr': {'class': 'control-label'}})}}<br> {{ form_widget (form.password, {'attr': {'class': 'col-xs-12 ' }}) }}<br>
+                    </div>
+
+
+                    {{form_widget(form.save, {'label': 'se connecter','attr': { 'class': 'btn btn-success'}}) }} {{ form_end(form)}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

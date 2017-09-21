@@ -1,0 +1,29 @@
+{% extends "layoutAdmin.html.twig" %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="cadre">
+            <h1><i class="fa fa-envelope-o"></i> Sujet : {{contact.sujet}}</h1>
+            <blockquote>
+                <ul>
+                    <li><strong>Expediteur :</strong> {{contact.prenom}} {{contact.nom}}</li>
+                    <li><strong>Contact :</strong> {{contact.mail}}</li>
+                    <li><strong>Envoyé le :</strong> {{contact.date|date('d/m/Y')}}</li>
+                </ul>
+            </blockquote>
+            <form action="http://framework.dev/admin/contact/{{contact.id}}" method="post">
+                <a href="http://framework.dev/admin/accueil" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>Retour</a>
+
+                <input type="submit" value="Marquer comme non lu" class="btn btn-danger" /> {{ form_rest(form) }}
+            </form>
+
+            <div class="contact">
+                <h2>Message :</h2>
+                <p>{{contact.message}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

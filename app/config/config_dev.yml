@@ -1,0 +1,5 @@
+doctrine:
+    dbname: 'alaska'
+    user: 'alaska_user'
+    password: 'secret'
+

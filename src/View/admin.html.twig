@@ -1,0 +1,365 @@
+{%extends "layoutAdmin.html.twig"%}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <ul class="nav nav-pills nav-justified lateral">
+            <li class="active"><a href="#chapitres" data-toggle="tab"><i class="fa fa-bookmark-o"></i> Chapitres</a></li>
+            <li><a href="#comment" data-toggle="tab"><i class="fa fa-comment-o"></i> Commentaires</a></li>
+            <li><a href="#signale" data-toggle="tab"><i class="fa fa-comments-o"></i> Commentaires signalés</a></li>
+            <li><a href="#contact" data-toggle="tab"><i class=""></i><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#corbeille"><i class="fa fa-trash-o"></i> Corbeille<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#chap" data-toggle="tab"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Chapitres</a></li>
+                    <li><a href="#com" data-toggle="tab"><i class="fa fa-comment-o"></i> Commentaires</a></li>
+                    <li><a href="#comS" data-toggle="tab"><i class="fa fa-comments-o"></i> Commentaires signalés</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+
+
+        <div class="tab-content">
+
+            <!- section Chapitre->
+            <div class="tab-pane fade active in" id="chapitres">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <div class="row">
+                            <h1 class="col-lg-8 col-lg-offset-4">Ecrire un nouveau chapitre</h1>
+                            <div class="col-lg-4 col-lg-offset-5">
+                                <a class="btn btn-success btn-xs newChap" href="http://framework.dev/admin/add"><i class="fa fa-book" aria-hidden="true"></i> Nouveau chapitre</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive">
+                            <caption><i class="fa fa-bookmark-o" aria-hidden="true"></i> Chapitres en cours de rédaction :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Titre</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for chapter in chapters %} 
+                                    {%if chapter.published == false and chapter.delete == false %}
+                                <tr>
+                                    <td>{{chapter.number}}</td>
+                                    <td>{{chapter.title}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/edit/{{chapter.id}}"><i class="fa fa-pencil"></i> Editer</a>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/delete/{{chapter.id}}"><i class="fa fa-trash-o" aria-hidden="true"> </i> Supprimer</a>
+                                    </td>
+                                </tr>
+                                    {% endif %} 
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_chapter">
+                            <caption><i class="fa fa-bookmark-o" aria-hidden="true"></i> Chapitres publiés :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Titre</th>
+                                    <th>Date de publication</th>
+                                    <th>Mis à jour</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for chapter in chapters %} {%if chapter.published == true and chapter.delete == false %}
+                                <tr>
+                                    <td>{{chapter.number}}</td>
+                                    <td>{{chapter.title}}</td>
+                                    <td>{{chapter.date|date('d/m/Y')}}</td>
+                                    {%if chapter.update is null %}
+                                    <td></td>
+                                    {% else %}
+                                    <td>{{chapter.update|date('d/m/Y')}}</td>
+                                    {% endif %}
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/edit/{{chapter.id}}"><i class="fa fa-pencil"></i> Editer</a>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/delete/{{chapter.id}}"><i class="fa fa-trash-o" aria-hidden="true"> </i> Supprimer</a>
+                                    </td>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!- fin de section chapitre ->
+
+
+            <!- section commentaires ->
+            <div class="tab-pane fade" id="comment">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_comment">
+                            <caption><i class="fa fa-comment-o"></i> Commentaires :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %} {% if comment.signale == false and comment.delete == false%}
+                                <tr>
+                                    <td>{{comment.pseudo}}</td>
+                                    <td>{{comment.comment}}</td>
+                                    <td>{{comment.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/editcom/{{comment.id}}"><i class="fa fa-pencil"></i> Editer</a>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/deletecom/{{comment.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</a>
+                                    </td>
+                                </tr>
+                                {%endif%} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!- fin section commentaires ->
+
+            <!- section commentaires signalés ->
+            <div class="tab-pane fade" id="signale">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_comment_signal">
+                            <caption><i class="fa fa-comments-o"></i> Commentaires signalés :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %} {% if comment.signale == true and comment.delete == false %}
+                                <tr>
+                                    <td>{{comment.pseudo}}</td>
+                                    <td>{{comment.comment}}</td>
+                                    <td>{{comment.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/editcom/{{comment.id}}"><i class="fa fa-pencil"></i> Editer</a>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/deletecom/{{comment.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</a>
+                                    </td>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                <!-Fin section commentaire signalés ->
+            </div>
+
+            <!-section contact->
+
+            <!- section contacts non lus ->
+            <div class="tab-pane fade" id="contact">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive">
+
+
+                            <caption><i class="fa fa-envelope-o" aria-hidden="true"></i> Nouveaux messages :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>email</th>
+                                    <th>sujet</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for contacts in contacts %}
+
+                                <tr>
+                                    <td><strong>{{contacts.nom}}</strong></td>
+                                    <td><strong>{{contacts.prenom}}</strong></td>
+                                    <td><strong>{{contacts.mail}}</strong></td>
+                                    <td><strong>{{contacts.sujet}}</strong></td>
+                                    <td><strong>{{contacts.date|date('d/m/Y')}}</strong></td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/contact/{{contacts.id}}"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Lire</a>
+                                    </td>
+                                </tr>
+
+
+                                {% else %}
+                                <tr>
+                                    <td colspan="6">Pas de nouveau message</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                <!- section contacts  lus ->
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_contact">
+                            <caption><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Messages lus :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>email</th>
+                                    <th>sujet</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for contact in contactLus %}
+
+                                <tr>
+                                    <td>{{contact.nom}}</td>
+                                    <td>{{contact.prenom}}</td>
+                                    <td>{{contact.mail}}</td>
+                                    <td>{{contact.sujet}}</td>
+                                    <td>{{contact.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/contact/{{contact.id}}"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Lire</a>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/unread/{{contact.id}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Marquer comme non lu</a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="6">Pas de nouveaux messages</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+
+
+            </div>
+
+            <!-section corbeille chapitres -->
+            <div class="tab-pane fade" id="chap">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive">
+                            <caption><i class="fa fa-trash-o"></i> Corbeille : chapitres</caption>
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Titre</th>
+                                    <th>Date de publication</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for chapter in chapters %} {%if chapter.delete == true%}
+                                <tr>
+                                    <td>{{chapter.number}}</td>
+                                    <td>{{chapter.title}}</td>
+                                    <td>{{chapter.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs " href="http://framework.dev/admin/restore/{{chapter.id}}"><i class="fa fa-retweet" aria-hidden="true"></i> Restaurer</a>
+                                    </td>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!-fin section corbeille chapitre -->
+
+            <!- section Corbeille commentaires -->
+            <div class="tab-pane fade" id="com">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_corbeille_comment">
+                            <caption><i class="fa fa-trash-o"></i> Corbeille : commentaires</caption>
+                            <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %} {% if comment.signale == false and comment.delete == true %}
+                                <tr>
+                                    <td>{{comment.pseudo}}</td>
+                                    <td>{{comment.comment}}</td>
+                                    <td>{{comment.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/restorecom/{{comment.id}}"><i class="fa fa-retweet" aria-hidden="true"></i> Restaurer</a>
+                                    </td>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!-fin section corbeille commentaires -->
+
+            <!- section Corbeille signalé -->
+            <div class="tab-pane fade" id="comS">
+                <section class="col-lg-8 col-lg-offset-2 col-xs-12">
+                    <div class="cadre">
+                        <table class="table table-striped table-responsive" id="table_corbeille_comment_signal">
+                            <caption><i class="fa fa-trash-o"></i> Corbeille : commentaires signalés :</caption>
+                            <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %} {% if comment.signale == true and comment.delete == true %}
+                                <tr>
+                                    <td>{{comment.pseudo}}</td>
+                                    <td>{{comment.comment}}</td>
+                                    <td>{{comment.date|date('d/m/Y')}}</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-xs " href="http://framework.dev/admin/restorecom/{{comment.id}}"><i class="fa fa-retweet" aria-hidden="true"></i> Restaurer</a>
+                                    </td>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!- fin section Corbeille signalé -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+home:
+    path:     /accueil
+    defaults: { _controller: 'ChapterController::indexAction' }
+
+chapitre:
+    path:     /chapitre/{id}
+    defaults: { _controller: 'ChapterController::chapterAction' }
+    
+admin:
+    path:     /admin/accueil
+    defaults: { _controller: 'ChapterController::adminAction' }
+    
+add:
+    path:     admin/add
+    defaults: { _controller: 'ChapterController::addAction' }
+    
+edit:
+    path:     admin/edit/{id}
+    defaults: { _controller: 'ChapterController::editAction' }
+    
+delete:
+    path:     admin/delete/{id}
+    defaults: { _controller: 'ChapterController::deleteAction' }
+
+restore:
+    path:     admin/restore/{id}
+    defaults: { _controller: 'ChapterController::restoreAction' }
+
+signal:
+    path:     /signal/{id}
+    defaults: { _controller: 'CommentController::signalAction' }
+    
+editcom:
+    path:     admin/editcom/{id}
+    defaults: { _controller: 'CommentController::editComAction' }
+    
+deletecom:
+    path:     admin/deletecom/{id}
+    defaults: { _controller: 'CommentController::deleteComAction' }
+    
+restorecom:
+    path:     admin/restorecom/{id}
+    defaults: { _controller: 'CommentController::restoreComAction' }
+    
+contact:
+    path:     admin/contact/{id}
+    defaults: { _controller: 'ContactController::contactAction' }
+
+login :
+    path:     login
+    defaults: { _controller: 'UserController::loginAction' }
+
+logout :
+    path:     logout
+    defaults: { _controller: 'UserController::logoutAction' }
+
+unread :
+    path:     admin/unread/{id}
+    defaults: { _controller: 'ContactController::unreadAction' }
+
+
+

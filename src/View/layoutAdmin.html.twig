@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Administration : Billet Simple pour l'Alaska</title>
+    <link href="{{asset("css/bootstrap/css/bootstrap.css") }}" rel="stylesheet"/>
+    <link href="{{asset("css/styleAdmin.css")}}" rel="stylesheet" />
+    <link href="{{asset("css/font-awesome/css/font-awesome.css")}}" rel="stylesheet"/>
+    <link href="{{asset("DataTables/datatables.css")}}" rel="stylesheet"/>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <img alt="logo" src="{{asset("img/logo.png")}}" id="logo-title" class="" />
+        <a href="http://framework.dev/logout" class="btn btn-success btn-xs pull-right logout"><i class="fa fa-sign-out " aria-hidden="true"></i> se déconnecter</a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    <script src="{{asset("ckeditor/ckeditor.js")}}"></script>
+    <script src="{{asset("js/jquery-3.2.1.min.js")}}"></script>
+    <script src="{{asset("css/bootstrap/js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("DataTables/datatables.js")}}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table_comment').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+            $('#table_chapter').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+            $('#table_comment_signal').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+            $('#table_contact').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+            $('#table_corbeille_comment').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+            $('#table_corbeille_comment_signal').DataTable({
+                language: {
+                    url: '{{asset("DataTables/lang/fr_Fr.json")}}'
+                }
+            });
+
+        });
+    </script>
+
+
+
+</body>
+
+
+
+</html>

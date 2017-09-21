@@ -1,0 +1,19 @@
+{% extends "layoutAdmin.html.twig" %} {% block content %}
+<div class="container">
+    <section class="row cadre">
+        <h3>Vous êtes sur le point de restaurer : </h3>
+        <blockquote>
+            <p>"{{comment.comment}}"</p>
+        </blockquote>
+        <p class='question'>êtes-vous certain de vouloir continuer?</p>
+                <form action="http://framework.dev/admin/restorecom/{{comment.id}}" method="post">
+                    <a href="http://framework.dev/admin/accueil"  class="btn btn-success btn-xs">
+                        <i class="glyphicon glyphicon-chevron-left"></i> Retour
+                    </a>
+
+                    <input type="submit" value="restaurer" class="btn btn-danger" /> {{ form_rest(form) }}
+                </form>
+    </section>
+</div>
+
+{% endblock %}

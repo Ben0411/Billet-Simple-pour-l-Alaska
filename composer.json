@@ -1,0 +1,33 @@
+{
+    "name": "",
+    "authors": [
+        {
+            "name": "",
+            "email": ""
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/",
+            "Framework\\": "app/"
+        }
+    },
+    "require": {
+        "symfony/routing": "^3.2",
+        "symfony/http-foundation": "^3.2",
+        "twig/twig": "~1.28",
+        "doctrine/orm": "^2.5.5",
+        "symfony/yaml": "^3.2",
+        "symfony/config": "^3.2",
+        "symfony/form": "^3.2",
+        "symfony/security-core": "^3.2",
+        "symfony/security-csrf": "^3.2",
+        "symfony/security-http": "^3.2",
+        "symfony/twig-bridge": "^3.2",
+        "symfony/validator": "^3.2",
+        "symfony/translation": "^3.2",
+        "symfony/asset": "^3.2",
+        "symfony/console": "^3.2",
+        "symfony/cache": "^3.2"
+    }
+}

@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %} {% block content %}
+<div vs-anchor="" class="mainview commentBackground">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="background_chapter col-xs-8 col-xs-offset-2">
+                <div class="commentPage">
+                    <h1>Laisser un commentaire pour le chapitre : {{chapter.title}}</h1>
+
+                    <div class="form">
+
+                        {{ form_start(form, {'attr': {'class': ''}}) }} 
+                        
+                        {{ form_errors(form)}}
+
+                        <div class="form-group">
+                            {{ form_label(form.pseudo, 'pseudo', {'label_attr': {'class': 'control-label'}})}}<br> 
+                            {{ form_errors(form.pseudo) }}
+                            {{ form_widget (form.pseudo, {'attr': {'class': 'col-xs-6 col-lg-4' }}) }}<br>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.comment, 'commentaire', {'label_attr': {'class': 'control-label'}})}}<br> 
+                            {{ form_errors(form.comment) }}
+                            {{ form_widget (form.comment, {'attr': {'class': 'col-xs-12 ' }}) }}<br>
+                        </div>
+
+
+                        {{form_widget(form.save, {'label': 'Commenter','attr': { 'class': 'comment_button btn btn-primary col-xs-3'}}) }} 
+                        
+                        {{ form_end(form)}}
+                        
+                    </div>
+                    <div class="cadreScrollcom col-xs-12">
+                        {% for comment in comment %}
+
+                        <div class="cadre col-xs-12">
+                            <h2><strong>{{comment.pseudo}}</strong> à écrit le <small>{{comment.date|date('d/m/Y')}}</small> </h2>
+                            <p>{{comment.comment}}</p>
+
+                            <a href="http://framework.dev/signal/{{comment.id}}"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> signaler</a>
+
+                        </div>
+                        {% endfor%}
+                    </div>
+                </div>
+            </div>
+                    
+        </div>
+        
+    </div>
+    
+</div>
+
+{% endblock %}
